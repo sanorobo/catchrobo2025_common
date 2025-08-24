@@ -15,12 +15,12 @@ struct ModeOrder {
 };
 
 inline CanMessage to_can_message(const ModeOrder &mode_order) {
-  CanMessage canmsg;
-  canmsg.id = ModeOrder::ID;
-  canmsg.ide = false;
-  canmsg.dlc = 1;
-  std::memcpy(&canmsg.data[0], &mode_order.mode, sizeof(uint8_t));
-  return canmsg;
+  CanMessage msg;
+  msg.id = ModeOrder::ID;
+  msg.ide = false;
+  msg.dlc = 1;
+  std::memcpy(&msg.data[0], &mode_order.mode, sizeof(uint8_t));
+  return msg;
 }
 
 template <> std::optional<ModeOrder> from_can_message(const CanMessage &msg) {
