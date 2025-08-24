@@ -11,8 +11,8 @@ namespace catchrobo2025::messages {
 struct Localization {
   static constexpr uint32_t ID = 0x201;
 
-  float x = 0.0f;
-  float y = 0.0f;
+  float x;
+  float y;
 };
 
 inline CanMessage to_can_message(const Localization &localization) {
