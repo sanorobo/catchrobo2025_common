@@ -17,7 +17,7 @@ struct EndEffectorOrder {
 };
 
 inline CanMessage to_can_message(const EndEffectorOrder &end_effector_order) {
-  CanMessage canmsg{};
+  CanMessage canmsg;
   canmsg.id = EndEffectorOrder::ID;
   canmsg.ide = false;
   canmsg.dlc = 7;
@@ -32,7 +32,7 @@ template <> std::optional<EndEffectorOrder> from_can_message(const CanMessage &m
   if (msg.id != EndEffectorOrder::ID || msg.ide != false || msg.dlc != 7) {
     return std::nullopt;
   }
-  EndEffectorOrder end_effector_order{};
+  EndEffectorOrder end_effector_order;
   std::memcpy(&end_effector_order.mode, &msg.data[0], sizeof(uint8_t));
   std::memcpy(&end_effector_order.z_pos, &msg.data[1], sizeof(float));
   int16_t yaw_i16;
