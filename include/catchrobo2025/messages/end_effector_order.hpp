@@ -11,13 +11,13 @@ namespace catchrobo2025::messages {
 struct EndEffectorOrder {
   static constexpr uint32_t ID = 0x011;
 
-  uint8_t mode = 0b00000000;
-  float z_pos = 0.0;
-  float yaw_pos = 0.0;
+  uint8_t mode;
+  float z_pos;
+  float yaw_pos;
 };
 
 inline CanMessage to_can_message(const EndEffectorOrder &end_effector_order) {
-  CanMessage msg;
+  CanMessage msg{};
   msg.id = EndEffectorOrder::ID;
   msg.ide = false;
   msg.dlc = 7;
@@ -32,7 +32,7 @@ template <> std::optional<EndEffectorOrder> from_can_message(const CanMessage &m
   if (msg.id != EndEffectorOrder::ID || msg.ide != false || msg.dlc != 7) {
     return std::nullopt;
   }
-  EndEffectorOrder end_effector_order;
+  EndEffectorOrder end_effector_order{};
   std::memcpy(&end_effector_order.mode, &msg.data[0], sizeof(uint8_t));
   std::memcpy(&end_effector_order.z_pos, &msg.data[1], sizeof(float));
   int16_t yaw_i16;

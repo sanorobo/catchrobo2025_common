@@ -11,11 +11,11 @@ namespace catchrobo2025::messages {
 struct EndEffectorModeTelemetry {
   static constexpr uint32_t ID = 0x100;
 
-  uint8_t mode = 0b00000000;
+  uint8_t mode;
 };
 
 inline CanMessage to_can_message(const EndEffectorModeTelemetry &end_effector_mode_telemetry) {
-  CanMessage msg;
+  CanMessage msg{};
   msg.id = EndEffectorModeTelemetry::ID;
   msg.ide = false;
   msg.dlc = 1;
@@ -27,7 +27,7 @@ template <> std::optional<EndEffectorModeTelemetry> from_can_message(const CanMe
   if (msg.id != EndEffectorModeTelemetry::ID || msg.ide != false || msg.dlc != 1) {
     return std::nullopt;
   }
-  EndEffectorModeTelemetry end_effector_mode_telemetry;
+  EndEffectorModeTelemetry end_effector_mode_telemetry{};
   std::memcpy(&end_effector_mode_telemetry.mode, &msg.data[0], sizeof(uint8_t));
   return end_effector_mode_telemetry;
 }

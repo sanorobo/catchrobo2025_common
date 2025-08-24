@@ -11,11 +11,11 @@ namespace catchrobo2025::messages {
 struct ModeOrder {
   static constexpr uint32_t ID = 0x0F0;
 
-  uint8_t mode = 0b00000000;
+  uint8_t mode;
 };
 
 inline CanMessage to_can_message(const ModeOrder &mode_order) {
-  CanMessage msg;
+  CanMessage msg{};
   msg.id = ModeOrder::ID;
   msg.ide = false;
   msg.dlc = 1;
@@ -27,7 +27,7 @@ template <> std::optional<ModeOrder> from_can_message(const CanMessage &msg) {
   if (msg.id != ModeOrder::ID || msg.ide != false || msg.dlc != 1) {
     return std::nullopt;
   }
-  ModeOrder mode_order;
+  ModeOrder mode_order{};
   std::memcpy(&mode_order.mode, &msg.data[0], sizeof(uint8_t));
   return mode_order;
 }

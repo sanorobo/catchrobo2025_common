@@ -16,7 +16,7 @@ struct Localization {
 };
 
 inline CanMessage to_can_message(const Localization &localization) {
-  CanMessage msg;
+  CanMessage msg{};
   msg.id = Localization::ID;
   msg.ide = false;
   msg.dlc = 8;
@@ -29,7 +29,7 @@ template <> std::optional<Localization> from_can_message(const CanMessage &msg) 
   if (msg.id != Localization::ID || msg.ide != false || msg.dlc != 8) {
     return std::nullopt;
   }
-  Localization localization;
+  Localization localization{};
   std::memcpy(&localization.x, &msg.data[0], sizeof(float));
   std::memcpy(&localization.y, &msg.data[4], sizeof(float));
   return localization;
