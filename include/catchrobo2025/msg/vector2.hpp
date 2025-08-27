@@ -6,7 +6,7 @@
 
 namespace catchrobo2025::msg {
 
-struct Localization {
+struct Vector2 {
   float x;
   float y;
 
@@ -17,11 +17,11 @@ struct Localization {
     return data;
   }
 
-  static inline Localization deserialize(const std::array<uint8_t, 8> &data) {
-    Localization localization{};
-    std::memcpy(&localization.x, &data[0], sizeof(float));
-    std::memcpy(&localization.y, &data[4], sizeof(float));
-    return localization;
+  static inline Vector2 deserialize(const std::array<uint8_t, 8> &data) {
+    Vector2 vector2{};
+    std::memcpy(&vector2.x, &data[0], sizeof(float));
+    std::memcpy(&vector2.y, &data[4], sizeof(float));
+    return vector2;
   }
 };
 
