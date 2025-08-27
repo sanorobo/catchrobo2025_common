@@ -5,22 +5,20 @@
 #include "can/publisher.hpp"
 #include "can/subscription.hpp"
 
-#include "msg/end_effector_mode_telemetry.hpp"
 #include "msg/end_effector_order.hpp"
 #include "msg/localization.hpp"
-#include "msg/main_arm_mode_telemetry.hpp"
-#include "msg/mode_order.hpp"
 #include "msg/pos_inst.hpp"
+#include "msg/primitive.hpp"
 
 namespace catchrobo2025::can {
 
 #ifdef CATCHROBO2025_MAIN
-using ModeOrderPub = Publisher<0x0f0, msg::ModeOrder>;
+using ModeOrderPub = Publisher<0x0f0, msg::Primitive<uint8_t>>;
 using EndEffectorOrderPub = Publisher<0x11, msg::EndEffectorOrder>;
 using PosInstPub = Publisher<0x021, msg::PosInst>;
 
-using EndEffectorModeTelemetrySub = Subscription<0x10, msg::EndEffectorModeTelemetry>;
-using MainArmModeTelemetrySub = Subscription<0x11, msg::MainArmModeTelemetry>;
+using EndEffectorModeTelemetrySub = Subscription<0x10, msg::Primitive<uint8_t>>;
+using MainArmModeTelemetrySub = Subscription<0x11, msg::Primitive<uint8_t>>;
 using LocalizationSub = Subscription<0x21, msg::Localization>;
 #endif
 
