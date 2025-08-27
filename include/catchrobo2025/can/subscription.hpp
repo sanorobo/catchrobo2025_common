@@ -12,7 +12,7 @@ namespace catchrobo2025::can {
 
 template <uint32_t Id, class T> class Subscription {
 public:
-  Subscription(halx::peripheral::CanBase &can) : can_{can} {
+  Subscription(halx::peripheral::CanBase &can, uint32_t timeout = 1000) : can_{can}, timeout_{timeout} {
     auto filter_index = can_.attach_rx_queue({Id, Id, false}, rx_queue_);
     if (!filter_index) {
       std::terminate();
@@ -23,27 +23,24 @@ public:
   ~Subscription() { can_.detach_rx_filter(filter_index_); }
 
   std::optional<T> receive() {
-    std::optional<T> latest;
     while (auto msg = rx_queue_.pop(0)) {
-      latest = T::deserialize(msg->data);
+      msg_ = T::deserialize(msg->data);
+      last_received_ = halx::core::get_tick();
     }
-    if (latest) {
-      error_count_ = 0;
-    } else {
-      error_count_++;
+    if (halx::core::get_tick() > last_received_ + timeout_) {
+      return std::nullopt;
     }
-    return latest;
+    return msg_;
   }
 
-  bool error_occurred() const { return error_count_ > ERROR_COUNT_THRESHOLD; }
-
 private:
-  static constexpr uint32_t ERROR_COUNT_THRESHOLD = 10;
-
   halx::peripheral::CanBase &can_;
   halx::core::RingBuffer<halx::peripheral::CanMessage> rx_queue_{64};
   size_t filter_index_;
-  uint32_t error_count_ = 0;
+  uint32_t timeout_;
+
+  std::optional<T> msg_;
+  uint32_t last_received_ = 0;
 };
 
 } // namespace catchrobo2025::can
