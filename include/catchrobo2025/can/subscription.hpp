@@ -27,7 +27,7 @@ public:
       msg_ = T::deserialize(msg->data);
       last_received_ = halx::core::get_tick();
     }
-    if (halx::core::get_tick() > last_received_ + timeout_) {
+    if (static_cast<uint32_t>(halx::core::get_tick() - last_received_) > timeout_) {
       return std::nullopt;
     }
     return msg_;
