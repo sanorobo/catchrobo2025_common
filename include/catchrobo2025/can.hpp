@@ -15,6 +15,7 @@ namespace catchrobo2025::can {
 using ModeOrderPub = Publisher<0x0f0, msg::Primitive<uint8_t>>;
 using EndEffectorOrderPub = Publisher<0x11, msg::EndEffectorOrder>;
 using PosInstPub = Publisher<0x021, msg::Vector2>;
+using ArmModeOrderPub = Publisher<0x022, msg::Primitive<uint8_t>>;
 
 using EndEffectorModeTelemetrySub = Subscription<0x10, msg::Primitive<uint8_t>>;
 using MainArmModeTelemetrySub = Subscription<0x11, msg::Primitive<uint8_t>>;
