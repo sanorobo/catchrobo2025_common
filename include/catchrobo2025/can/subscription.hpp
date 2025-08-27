@@ -22,7 +22,7 @@ public:
 
   ~Subscription() { can_.detach_rx_filter(filter_index_); }
 
-  std::optional<T> get_latest() {
+  std::optional<T> receive() {
     std::optional<T> latest;
     while (auto msg = rx_queue_.pop(0)) {
       latest = T::deserialize(msg->data);
