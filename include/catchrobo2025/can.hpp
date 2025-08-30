@@ -28,6 +28,8 @@ using StockerTelemetrySub = Subscription<0x5f, msg::Primitive<uint8_t>>;
 #endif
 
 #ifdef CATCHROBO2025_END_EFFECTOR
+using TelemetryPub = Publisher<0x10, msg::Primitive<uint8_t>>;
+using OrderSub = Subscription<0x11, msg::EndEffectorOrder>;
 #endif
 
 #ifdef CATCHROBO2025_HAND
