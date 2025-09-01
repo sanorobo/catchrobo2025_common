@@ -12,15 +12,24 @@
 namespace catchrobo2025::can {
 
 #ifdef CATCHROBO2025_MAIN
+// ブロードキャスト
 using ModeOrderPub = Publisher<0xF0, msg::Primitive<uint8_t>>;
-using EndEffectorOrderPub = Publisher<0x11, msg::EndEffectorOrder>;
+
+// end effector
+using EndEffectorOrderPub = Publisher<0x10, msg::EndEffectorOrder>;
+
+using EndEffectorModeTelemetrySub = Subscription<0x1F, msg::Primitive<uint8_t>>;
+
+// arm
 using ArmModeOrderPub = Publisher<0x20, msg::Primitive<uint8_t>>;
 using ArmPosOrderPub = Publisher<0x21, msg::Vector2>;
-using StockerOrderPub = Publisher<0x50, msg::Primitive<uint8_t>>;
 
-using EndEffectorModeTelemetrySub = Subscription<0x100, msg::Primitive<uint8_t>>;
 using ArmTelemetrySub = Subscription<0x2F, msg::Primitive<uint8_t>>;
 using ArmLocalizationSub = Subscription<0x2E, msg::Vector2>;
+
+// stocker
+using StockerOrderPub = Publisher<0x50, msg::Primitive<uint8_t>>;
+
 using StockerTelemetrySub = Subscription<0x5F, msg::Primitive<uint8_t>>;
 #endif
 
