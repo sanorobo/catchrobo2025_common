@@ -11,6 +11,21 @@
 
 namespace catchrobo2025::can {
 
+enum class StockerOrder : uint8_t {
+  HOMING    = 0,
+  STOCK_1   = 1,
+  STOCK_2   = 2,
+  STOCK_3   = 3,
+  STOCK_4   = 4,
+  STOCK_5   = 5,
+  STOCK_6   = 6
+};
+
+enum class StockerTelemetry : uint8_t {
+  READY     = 0,
+  RUNNING   = 1,
+};
+
 #ifdef CATCHROBO2025_MAIN
 using ModeOrderPub = Publisher<0xF0, msg::Primitive<uint8_t>>;
 using EndEffectorOrderPub = Publisher<0x11, msg::EndEffectorOrder>;
