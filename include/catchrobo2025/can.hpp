@@ -25,6 +25,12 @@ using StockerTelemetrySub = Subscription<0x5F, msg::Primitive<uint8_t>>;
 #endif
 
 #ifdef CATCHROBO2025_ARM
+using MainArmModeTelemetryPub = Publisher<0x200, msg::Primitive<uint8_t>>;
+using LocalizationPub = Publisher<0x201, msg::Vector2>;
+
+using ModeOrderSub = Subscription<0xF0, msg::Primitive<uint8_t>>;
+using ArmModeOrderSub = Subscription<0x22, msg::Primitive<uint8_t>>;
+using ArmPosOrderSub =  Subscription<0x21, msg::Vector2>;
 #endif
 
 #ifdef CATCHROBO2025_END_EFFECTOR
