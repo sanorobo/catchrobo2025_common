@@ -18,7 +18,7 @@ using ModeOrderPub = Publisher<0xF1, msg::Primitive<uint8_t>>;
 // end effector
 using EndEffectorOrderPub = Publisher<0x11, msg::EndEffectorOrder>;
 
-using EndEffectorModeTelemetrySub = Subscription<0x1F, msg::Primitive<uint8_t>>;
+using EndEffectorTelemetrySub = Subscription<0x1F, msg::Primitive<uint8_t>>;
 
 // arm
 using ArmModeOrderPub = Publisher<0x21, msg::Primitive<uint8_t>>;
@@ -39,7 +39,7 @@ using ArmLocalizationPub = Publisher<0x2E, msg::Vector2>;
 
 using ModeOrderSub = Subscription<0xF1, msg::Primitive<uint8_t>>;
 using ArmModeOrderSub = Subscription<0x21, msg::Primitive<uint8_t>>;
-using ArmPosOrderSub =  Subscription<0x22, msg::Vector2>;
+using ArmPosOrderSub = Subscription<0x22, msg::Vector2>;
 #endif
 
 #ifdef CATCHROBO2025_END_EFFECTOR
