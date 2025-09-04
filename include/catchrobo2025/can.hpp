@@ -7,6 +7,8 @@
 
 #include "msg/end_effector_order.hpp"
 #include "msg/primitive.hpp"
+#include "msg/stocker_order.hpp"
+#include "msg/stocker_telemetry.hpp"
 #include "msg/vector2.hpp"
 
 namespace catchrobo2025::can {
@@ -52,10 +54,8 @@ using OrderSub = Subscription<0x11, msg::EndEffectorOrder>;
 #endif
 
 #ifdef CATCHROBO2025_STOCKER
-using TelemetryPub = Publisher<0x5f, msg::Primitive<uint8_t>>;
-using OrderSub = Subscription<0x51, msg::Primitive<uint8_t>>;
+using TelemetryPub = Publisher<0x5f, msg::Primitive<msg::StockerTelemetry>>;
+using OrderSub = Subscription<0x51, msg::Primitive<msg::StockerOrder>>;
 #endif
 
-enum class StockerOrder : uint8_t { HOMING = 10, STOCK_1 = 11, STOCK_2 = 12, STOCK_3 = 13, STOCK_4 = 14, STOCK_5 = 15, STOCK_6 = 16, AVOID = 17 };
-enum class StockerTelemetry : uint8_t { READY = 10, RUNNING = 11 };
 } // namespace catchrobo2025::can
