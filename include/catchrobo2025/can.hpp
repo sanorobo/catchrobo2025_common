@@ -62,4 +62,8 @@ using OrderSub = Subscription<0x51, msg::Primitive<uint8_t>>;
 
 enum class StockerOrder : uint8_t { HOMING = 10, STOCK_1 = 11, STOCK_2 = 12, STOCK_3 = 13, STOCK_4 = 14, STOCK_5 = 15, STOCK_6 = 16, AVOID = 17 };
 enum class StockerTelemetry : uint8_t { READY = 10, RUNNING = 11 };
+enum class ControlMode : uint8_t {
+  CALIBRATION = 0b00000001,
+  RED_ZONE = 0b10000000,
+};
 } // namespace catchrobo2025::can
