@@ -49,6 +49,10 @@ using OrderSub = Subscription<0x11, msg::EndEffectorOrder>;
 #endif
 
 #ifdef CATCHROBO2025_HAND
+using TelemetryPub = Publisher<0x3F, msg::Primitive<uint8_t>>;
+
+using ModeOrderSub = Subscription<0xF1, msg::Primitive<uint8_t>>;
+using OrderSub = Subscription<0x31, msg::Primitive<uint8_t>>;
 #endif
 
 #ifdef CATCHROBO2025_STOCKER
