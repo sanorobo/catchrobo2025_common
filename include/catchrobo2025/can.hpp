@@ -27,6 +27,11 @@ using ArmPosOrderPub = Publisher<0x22, msg::Vector2>;
 using ArmTelemetrySub = Subscription<0x2F, msg::Primitive<uint8_t>>;
 using ArmLocalizationSub = Subscription<0x2E, msg::Vector2>;
 
+// 最速 & 妨害
+using HandOrderPub = Publisher<0x31, msg::Primitive<uint8_t>>;
+
+using HandTelemetrySub = Subscription<0x3F, msg::Primitive<uint8_t>>;
+
 // stocker
 using StockerOrderPub = Publisher<0x51, msg::Primitive<uint8_t>>;
 
