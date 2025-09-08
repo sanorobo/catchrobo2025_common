@@ -63,6 +63,7 @@ using OrderSub = Subscription<0x31, msg::Primitive<uint8_t>>;
 #ifdef CATCHROBO2025_STOCKER
 using TelemetryPub = Publisher<0x5f, msg::Primitive<uint8_t>>;
 using OrderSub = Subscription<0x51, msg::Primitive<uint8_t>>;
+using ModeOrderSub = Subscription<0xF1, msg::Primitive<uint8_t>>;
 #endif
 
 enum class StockerOrder : uint8_t { HOMING = 10, STOCK_1 = 11, STOCK_2 = 12, STOCK_3 = 13, STOCK_4 = 14, STOCK_5 = 15, STOCK_6 = 16, AVOID = 17 };
