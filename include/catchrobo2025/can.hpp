@@ -7,6 +7,8 @@
 
 #include "msg/end_effector_order.hpp"
 #include "msg/primitive.hpp"
+#include "msg/stocker_order.hpp"
+#include "msg/stocker_telemetry.hpp"
 #include "msg/vector2.hpp"
 
 namespace catchrobo2025::can {
@@ -66,8 +68,6 @@ using OrderSub = Subscription<0x51, msg::Primitive<uint8_t>>;
 using ModeOrderSub = Subscription<0xF1, msg::Primitive<uint8_t>>;
 #endif
 
-enum class StockerOrder : uint8_t { HOMING = 10, STOCK_1 = 11, STOCK_2 = 12, STOCK_3 = 13, STOCK_4 = 14, STOCK_5 = 15, STOCK_6 = 16, AVOID = 17 };
-enum class StockerTelemetry : uint8_t { READY = 10, RUNNING = 11 };
 enum class HandOrder : uint8_t { START = 0b00000001 };
 enum class HandTelemetry : uint8_t { READY = 0b00000001, COMPLETE = 0b00000010 };
 enum class ControlMode : uint8_t {
