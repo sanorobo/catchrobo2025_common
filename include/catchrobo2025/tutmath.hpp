@@ -1,7 +1,6 @@
 #pragma once
 
 #include "angles.hpp"
-#include "constant.hpp"
 
 // filter
 #include "filter/cos.hpp"
