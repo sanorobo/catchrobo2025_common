@@ -7,6 +7,7 @@
 
 #include "msg/control_mode.hpp"
 #include "msg/end_effector_order.hpp"
+#include "msg/enum_set.hpp"
 #include "msg/hand_order.hpp"
 #include "msg/hand_telemetry.hpp"
 #include "msg/primitive.hpp"
@@ -66,9 +67,9 @@ using OrderSub = Subscription<0x31, msg::Primitive<uint8_t>>;
 #endif
 
 #ifdef CATCHROBO2025_STOCKER
-using TelemetryPub = Publisher<0x5f, msg::Primitive<uint8_t>>;
-using OrderSub = Subscription<0x51, msg::Primitive<uint8_t>>;
-using ModeOrderSub = Subscription<0xF1, msg::Primitive<uint8_t>>;
+using TelemetryPub = Publisher<0x5f, msg::Primitive<msg::StockerTelemetry>>;
+using OrderSub = Subscription<0x51, msg::Primitive<msg::StockerOrder>>;
+using ModeOrderSub = Subscription<0xF1, msg::EnumSet<msg::ControlMode>>;
 #endif
 
 } // namespace catchrobo2025::can
