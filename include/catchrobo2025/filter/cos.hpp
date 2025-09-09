@@ -1,8 +1,7 @@
 #pragma once
 
 #include <cmath>
-
-#include "../constant.hpp"
+#include <numbers>
 
 namespace tutmath {
 
@@ -22,7 +21,7 @@ public:
 
   float solve(float tim) {
     if (tim - _start_tim < _target_tim_diff) {
-      return _target_val * (1.0 - 0.5 * (std::cos(pi * (tim - _start_tim) / _target_tim_diff) + 1.0));
+      return _target_val * (1.0 - 0.5 * (std::cos(std::numbers::pi * (tim - _start_tim) / _target_tim_diff) + 1.0));
     } else {
       return _target_val;
     }
