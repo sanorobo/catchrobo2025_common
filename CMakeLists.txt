@@ -12,4 +12,5 @@ target_link_libraries(${PROJECT_NAME} INTERFACE
 target_include_directories(${PROJECT_NAME} INTERFACE
   include
   ${CMAKE_CURRENT_BINARY_DIR}/include
+  eigen
 )
