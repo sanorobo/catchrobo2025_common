@@ -5,7 +5,10 @@
 #include "can/publisher.hpp"
 #include "can/subscription.hpp"
 
+#include "msg/control_mode.hpp"
 #include "msg/end_effector_order.hpp"
+#include "msg/hand_order.hpp"
+#include "msg/hand_telemetry.hpp"
 #include "msg/primitive.hpp"
 #include "msg/stocker_order.hpp"
 #include "msg/stocker_telemetry.hpp"
@@ -68,10 +71,4 @@ using OrderSub = Subscription<0x51, msg::Primitive<uint8_t>>;
 using ModeOrderSub = Subscription<0xF1, msg::Primitive<uint8_t>>;
 #endif
 
-enum class HandOrder : uint8_t { START = 0b00000001 };
-enum class HandTelemetry : uint8_t { READY = 0b00000001, COMPLETE = 0b00000010 };
-enum class ControlMode : uint8_t {
-  CALIBRATION = 0b00000001,
-  RED_ZONE = 0b10000000,
-};
 } // namespace catchrobo2025::can
