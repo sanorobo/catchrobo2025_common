@@ -7,6 +7,9 @@ namespace catchrobo2025::msg {
 enum class HandOrder : uint8_t {
   START = 0b00000001,
   IDLE = 0b00000010,
+  POS0 = 0b00000100,
+  POS1 = 0b00001000,
+  POS2 = 0b00010000,
 };
 
 }
