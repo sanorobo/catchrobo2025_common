@@ -55,8 +55,13 @@ using ArmPosOrderSub = Subscription<0x22, msg::Vector2>;
 
 #ifdef CATCHROBO2025_END_EFFECTOR
 using TelemetryPub = Publisher<0x1F, msg::Primitive<uint8_t>>;
+using ServoShieldOrderPub = Publisher<0x1D, msg::Primitive<uint8_t>>;
 using ModeOrderSub = Subscription<0xF1, msg::Primitive<uint8_t>>;
 using OrderSub = Subscription<0x11, msg::EndEffectorOrder>;
+#endif
+
+#ifdef CATCHROBO2025_RESERVE_END_EFFECTOR_SERVO
+using ServoShieldOrderSub = Subscription<0x1D, msg::Primitive<uint8_t>>;
 #endif
 
 #ifdef CATCHROBO2025_HAND
