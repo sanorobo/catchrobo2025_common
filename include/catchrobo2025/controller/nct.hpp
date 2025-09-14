@@ -1,28 +1,24 @@
 #pragma once
 
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <iterator>
-#include <vector>
 
 namespace tutmath {
 
-struct nct_t {
-  std::vector<float> p_error;
-  std::vector<float> p_vel;
-  std::vector<float> n_error;
-  std::vector<float> n_vel;
-};
-
-class NCTController {
+template <std::size_t PN, std::size_t NN> class NCTController {
 private:
-  nct_t _nct;
+  const std::array<float, PN> &_p_error;
+  const std::array<float, PN> &_p_vel;
+  const std::array<float, NN> &_n_error;
+  const std::array<float, NN> &_n_vel;
 
-  size_t get_closest_iterator(float error, const std::vector<float> &error_vec) {
-    auto it = std::lower_bound(error_vec.begin(), error_vec.end(), error);
-    size_t i = std::distance(error_vec.begin(), it);
+  template <std::size_t N> size_t get_closest_iterator(float error, const std::array<float, N> &error_arr) {
+    auto it = std::lower_bound(error_arr.begin(), error_arr.end(), error);
+    size_t i = std::distance(error_arr.begin(), it);
     if (i > 0) {
-      if (std::abs(error_vec.at(i - 1) - error) < (error_vec.at(i) - error)) {
+      if (std::abs(error_arr.at(i - 1) - error) < (error_arr.at(i) - error)) {
         return i - 1;
       }
     }
@@ -30,20 +26,21 @@ private:
   }
 
 public:
-  void init(const nct_t &nct) { _nct = nct; }
+  NCTController(const std::array<float, PN> &p_error, const std::array<float, PN> &p_vel, const std::array<float, NN> &n_error, const std::array<float, NN> &n_vel)
+      : _p_error(p_error), _p_vel(p_vel), _n_error(n_error), _n_vel(n_vel) {}
 
   float solve(float error) {
     if (error > 0) {
-      if (error <= _nct.p_error.at(_nct.p_error.size() - 1)) {
-        return _nct.p_vel.at(get_closest_iterator(error, _nct.p_error));
+      if (error <= _p_error.at(_p_error.size() - 1)) {
+        return _p_vel.at(get_closest_iterator<PN>(error, _p_error));
       } else {
-        return _nct.p_vel.at(_nct.p_error.size() - 1);
+        return _p_vel.at(_p_error.size() - 1);
       }
     } else {
-      if (error >= _nct.n_error.at(0)) {
-        return _nct.n_vel.at(get_closest_iterator(error, _nct.n_error));
+      if (error >= _n_error.at(0)) {
+        return _n_vel.at(get_closest_iterator<NN>(error, _n_error));
       } else {
-        return _nct.n_vel.at(0);
+        return _n_vel.at(0);
       }
     }
   }
