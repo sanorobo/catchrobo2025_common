@@ -13,6 +13,7 @@ enum class StockerOrder : uint8_t {
   STOCK_5 = 15,
   STOCK_6 = 16,
   AVOID = 17,
+  VIBRATION = 18,
 };
 
 }
