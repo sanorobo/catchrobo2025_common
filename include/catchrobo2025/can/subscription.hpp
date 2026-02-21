@@ -16,7 +16,7 @@ template <uint32_t Id, class T> class Subscription {
 public:
   Subscription(halx::peripheral::CanBase &can, uint32_t timeout = 1000) : can_{can}, timeout_{timeout} {
     auto filter_index = can_.attach_rx_filter(
-        {Id, Id, false},
+        {Id, (1 << 11) - 1, false},
         [](void *context, const halx::peripheral::CanMessage &msg) {
           auto *subscription = static_cast<Subscription *>(context);
           subscription->rx_mailbox_.push(msg);
