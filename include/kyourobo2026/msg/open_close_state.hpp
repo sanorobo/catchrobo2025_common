@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace kyourobo2025::msg {
+namespace kyourobo2026::msg {
 
 // 頭開閉状態
 enum class OpenCloseState {
@@ -10,4 +10,4 @@ enum class OpenCloseState {
   CLOSE,
 };
 
-} // namespace kyourobo2025::msg
+} // namespace kyourobo2026::msg

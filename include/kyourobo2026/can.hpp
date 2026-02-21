@@ -10,7 +10,7 @@
 
 #include "msg/open_close_state.hpp"
 
-namespace kyourobo2025::can {
+namespace kyourobo2026::can {
 
 using catchrobo2025::can::Publisher;
 using catchrobo2025::can::Subscription;
@@ -35,4 +35,4 @@ using UpDownSub = Subscription<0x15, catchrobo2025::msg::Primitive<float>>;
 using TurretYawSub = Subscription<0x16, catchrobo2025::msg::Primitive<float>>;
 #endif
 
-} // namespace kyourobo2025::can
+} // namespace kyourobo2026::can
