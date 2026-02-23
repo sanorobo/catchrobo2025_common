@@ -16,23 +16,23 @@ using catchrobo2025::can::Publisher;
 using catchrobo2025::can::Subscription;
 
 #ifdef KYOUROBO2026_ASHI
-using Spiral1Pub = Publisher<0x11, catchrobo2025::msg::Primitive<float>>;
-using Spiral2Pub = Publisher<0x12, catchrobo2025::msg::Primitive<float>>;
-using Spiral3Pub = Publisher<0x13, catchrobo2025::msg::Primitive<float>>;
-using OpenClosePub = Publisher<0x14, catchrobo2025::msg::Primitive<msg::OpenCloseState>>;
+using OpenClosePub = Publisher<0x11, catchrobo2025::msg::Primitive<msg::OpenCloseState>>;
+using UpDownPub = Publisher<0x12, catchrobo2025::msg::Primitive<float>>;
+using TurretYawPub = Publisher<0x13, catchrobo2025::msg::Primitive<float>>;
 
-using UpDownPub = Publisher<0x15, catchrobo2025::msg::Primitive<float>>;
-using TurretYawPub = Publisher<0x16, catchrobo2025::msg::Primitive<float>>;
+using Spiral1Pub = Publisher<0x14, catchrobo2025::msg::Primitive<float>>;
+using Spiral2Pub = Publisher<0x15, catchrobo2025::msg::Primitive<float>>;
+using Spiral3Pub = Publisher<0x16, catchrobo2025::msg::Primitive<float>>;
 #endif
 
 #ifdef KYOUROBO2026_ATAMA
-using Spiral1Sub = Subscription<0x11, catchrobo2025::msg::Primitive<float>>;
-using Spiral2Sub = Subscription<0x12, catchrobo2025::msg::Primitive<float>>;
-using Spiral3Sub = Subscription<0x13, catchrobo2025::msg::Primitive<float>>;
-using OpenCloseSub = Subscription<0x14, catchrobo2025::msg::Primitive<msg::OpenCloseState>>;
+using OpenCloseSub = Subscription<0x11, catchrobo2025::msg::Primitive<msg::OpenCloseState>>;
+using UpDownSub = Subscription<0x12, catchrobo2025::msg::Primitive<float>>;
+using TurretYawSub = Subscription<0x13, catchrobo2025::msg::Primitive<float>>;
 
-using UpDownSub = Subscription<0x15, catchrobo2025::msg::Primitive<float>>;
-using TurretYawSub = Subscription<0x16, catchrobo2025::msg::Primitive<float>>;
+using Spiral1Sub = Subscription<0x14, catchrobo2025::msg::Primitive<float>>;
+using Spiral2Sub = Subscription<0x15, catchrobo2025::msg::Primitive<float>>;
+using Spiral3Sub = Subscription<0x16, catchrobo2025::msg::Primitive<float>>;
 #endif
 
 } // namespace kyourobo2026::can
