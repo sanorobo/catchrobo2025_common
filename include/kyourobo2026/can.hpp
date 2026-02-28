@@ -8,9 +8,8 @@
 #include "catchrobo2025/msg/enum_set.hpp"
 #include "catchrobo2025/msg/primitive.hpp"
 
-#include "msg/feetech_position.hpp"
 #include "msg/open_close_state.hpp"
-#include "msg/pwm_servo_position.hpp"
+#include "msg/servo_position.hpp"
 
 namespace kyourobo2026::can {
 
@@ -26,8 +25,9 @@ using Spiral1Pub = Publisher<0x14, catchrobo2025::msg::Primitive<float>>;
 using Spiral2Pub = Publisher<0x15, catchrobo2025::msg::Primitive<float>>;
 using Spiral3Pub = Publisher<0x16, catchrobo2025::msg::Primitive<float>>;
 
-using FeetechPositionPub = Publisher<0x21, msg::FeetechPosition>;
-using PwmServoPositionPub = Publisher<0x22, msg::PwmServoPosition>;
+using FeetechPositionPub = Publisher<0x31, msg::ServoPosition>;
+using FeetechPositionSub = Subscription<0x32, msg::ServoPosition>;
+using PwmServoPositionPub = Publisher<0x33, msg::ServoPosition>;
 #endif
 
 #ifdef KYOUROBO2026_ATAMA
@@ -41,8 +41,9 @@ using Spiral3Sub = Subscription<0x16, catchrobo2025::msg::Primitive<float>>;
 #endif
 
 #ifdef KYOUROBO2026_SERVO
-using FeetechPositionSub = Subscription<0x11, msg::FeetechPosition>;
-using PwmServoPositionSub = Subscription<0x12, msg::PwmServoPosition>;
+using FeetechPositionSub = Subscription<0x31, msg::ServoPosition>;
+using FeetechPositionPub = Publisher<0x32, msg::ServoPosition>;
+using PwmServoPositionSub = Subscription<0x33, msg::ServoPosition>;
 #endif
 
 } // namespace kyourobo2026::can
