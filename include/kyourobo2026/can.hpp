@@ -17,17 +17,17 @@ using catchrobo2025::can::Publisher;
 using catchrobo2025::can::Subscription;
 
 #ifdef KYOUROBO2026_ASHI
-using OpenCloseSub = Publisher<0x11, catchrobo2025::msg::Primitive<uint8_t>>;
-using UpDownSub = Publisher<0x12, catchrobo2025::msg::Primitive<uint8_t>>;
-using TurretYawSub = Publisher<0x13, catchrobo2025::msg::Primitive<uint8_t>>;
+using OpenClosePub = Publisher<0x11, catchrobo2025::msg::Primitive<uint8_t>>;
+using UpDownPub = Publisher<0x12, catchrobo2025::msg::Primitive<uint8_t>>;
+using TurretYawPub = Publisher<0x13, catchrobo2025::msg::Primitive<uint8_t>>;
 
-using Spiral1Sub = Publisher<0x14, catchrobo2025::msg::Primitive<uint8_t>>;
-using Spiral2Sub = Publisher<0x15, catchrobo2025::msg::Primitive<uint8_t>>;
-using Spiral3Sub = Publisher<0x16, catchrobo2025::msg::Primitive<uint8_t>>;
+using Spiral1Pub = Publisher<0x14, catchrobo2025::msg::Primitive<uint8_t>>;
+using Spiral2Pub = Publisher<0x15, catchrobo2025::msg::Primitive<uint8_t>>;
+using Spiral3Pub = Publisher<0x16, catchrobo2025::msg::Primitive<uint8_t>>;
 
 using Entire = Publisher<0x17, catchrobo2025::msg::Primitive<uint8_t>>;
 
-using Pub = Subscription<0x20, catchrobo2025::msg::Primitive<uint16_t>>;
+using Sub = Subscription<0x20, catchrobo2025::msg::Primitive<uint16_t>>;
 
 using FeetechPositionPub = Publisher<0x31, msg::ServoPosition>;
 using FeetechPositionSub = Subscription<0x32, msg::ServoPosition>;
