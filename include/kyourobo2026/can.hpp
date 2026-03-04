@@ -8,6 +8,7 @@
 #include "catchrobo2025/msg/enum_set.hpp"
 #include "catchrobo2025/msg/primitive.hpp"
 
+#include "can/subscription_queue.hpp"
 #include "msg/open_close_state.hpp"
 #include "msg/servo_position.hpp"
 
