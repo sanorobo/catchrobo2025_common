@@ -36,15 +36,15 @@ using PwmServoPositionPub = Publisher<0x33, msg::ServoPosition>;
 #endif
 
 #ifdef KYOUROBO2026_ATAMA
-using OpenCloseSub = Subscription<0x11, catchrobo2025::msg::Primitive<uint8_t>>;
-using UpDownSub = Subscription<0x12, catchrobo2025::msg::Primitive<uint8_t>>;
-using TurretYawSub = Subscription<0x13, catchrobo2025::msg::Primitive<uint8_t>>;
+using OpenCloseSub = SubscriptionQueue<0x11, catchrobo2025::msg::Primitive<uint8_t>>;
+using UpDownSub = SubscriptionQueue<0x12, catchrobo2025::msg::Primitive<uint8_t>>;
+using TurretYawSub = SubscriptionQueue<0x13, catchrobo2025::msg::Primitive<uint8_t>>;
 
-using Spiral1Sub = Subscription<0x14, catchrobo2025::msg::Primitive<uint8_t>>;
-using Spiral2Sub = Subscription<0x15, catchrobo2025::msg::Primitive<uint8_t>>;
-using Spiral3Sub = Subscription<0x16, catchrobo2025::msg::Primitive<uint8_t>>;
+using Spiral1Sub = SubscriptionQueue<0x14, catchrobo2025::msg::Primitive<uint8_t>>;
+using Spiral2Sub = SubscriptionQueue<0x15, catchrobo2025::msg::Primitive<uint8_t>>;
+using Spiral3Sub = SubscriptionQueue<0x16, catchrobo2025::msg::Primitive<uint8_t>>;
 
-using Entire = Subscription<0x17, catchrobo2025::msg::Primitive<uint8_t>>;
+using Entire = SubscriptionQueue<0x17, catchrobo2025::msg::Primitive<uint8_t>>;
 
 using Pub = Publisher<0x20, catchrobo2025::msg::Primitive<uint16_t>>;
 #endif
