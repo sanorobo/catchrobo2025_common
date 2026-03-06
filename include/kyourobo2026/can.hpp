@@ -55,4 +55,34 @@ using FeetechPositionPub = Publisher<0x32, msg::ServoPosition>;
 using PwmServoPositionSub = Subscription<0x33, msg::ServoPosition>;
 #endif
 
+// 機構動作指令の定数定義
+enum {
+  IDLE = 0,
+  INIT = 1,
+  OPEN = 2,
+  CLOSE = 3,
+} OPEN_CLOSE_MECHA;
+
+enum {
+  IDLE = 0,
+  INIT = 1,
+  HIGHT_LOW = 2,
+  HIGHT_RELOAD = 3,
+  HIGHT_COLLECT_READY = 4,
+  HIGHT_COLLECT_ACTION = 5,
+} UP_DOWN_MECHA;
+
+enum {
+  IDLE = 0,
+  INIT = 1,
+} TURRET_YAW_MECHA;
+
+enum {
+  IDLE = 0,
+  INIT = 1,
+  CW = 2,
+  CCW = 3,
+  COLLECT = 4,
+} SPIRAL_MECHA;
+
 } // namespace kyourobo2026::can
