@@ -56,33 +56,33 @@ using PwmServoPositionSub = Subscription<0x33, msg::ServoPosition>;
 #endif
 
 // 機構動作指令の定数定義
-enum {
+enum OPEN_CLOSE_MECHA {
   IDLE = 0,
   INIT = 1,
   OPEN = 2,
   CLOSE = 3,
-} OPEN_CLOSE_MECHA;
+};
 
-enum {
+enum UP_DOWN_MECHA {
   IDLE = 0,
   INIT = 1,
   HIGHT_LOW = 2,
   HIGHT_RELOAD = 3,
   HIGHT_COLLECT_READY = 4,
   HIGHT_COLLECT_ACTION = 5,
-} UP_DOWN_MECHA;
+};
 
-enum {
+enum TURRET_YAW_MECHA {
   IDLE = 0,
   INIT = 1,
-} TURRET_YAW_MECHA;
+};
 
-enum {
+enum SPIRAL_MECHA {
   IDLE = 0,
   INIT = 1,
   CW = 2,
   CCW = 3,
   COLLECT = 4,
-} SPIRAL_MECHA;
+};
 
 } // namespace kyourobo2026::can
