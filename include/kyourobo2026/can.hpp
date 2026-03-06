@@ -57,15 +57,15 @@ using PwmServoPositionSub = Subscription<0x33, msg::ServoPosition>;
 
 // 機構動作指令の定数定義
 enum OPEN_CLOSE_MECHA {
-  IDLE = 0,
-  INIT = 1,
+  OPEN_CLOSE_IDLE = 0,
+  OPEN_CLOSE_INIT = 1,
   OPEN = 2,
   CLOSE = 3,
 };
 
 enum UP_DOWN_MECHA {
-  IDLE = 0,
-  INIT = 1,
+  UP_DOWN_IDLE = 0,
+  UP_DOWN_INIT = 1,
   HIGHT_LOW = 2,
   HIGHT_RELOAD = 3,
   HIGHT_COLLECT_READY = 4,
@@ -73,13 +73,13 @@ enum UP_DOWN_MECHA {
 };
 
 enum TURRET_YAW_MECHA {
-  IDLE = 0,
-  INIT = 1,
+  TURRET_YAW_IDLE = 0,
+  TURRET_YAW_INIT = 1,
 };
 
 enum SPIRAL_MECHA {
-  IDLE = 0,
-  INIT = 1,
+  SPIRAL_IDLE = 0,
+  SPIRAL_INIT = 1,
   CW = 2,
   CCW = 3,
   COLLECT = 4,
