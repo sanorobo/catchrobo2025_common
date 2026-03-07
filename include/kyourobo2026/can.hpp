@@ -83,6 +83,7 @@ enum SPIRAL_MECHA {
   CW = 2,
   CCW = 3,
   COLLECT = 4,
+  LOAD = 5,
 };
 
 } // namespace kyourobo2026::can
